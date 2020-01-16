@@ -1,7 +1,11 @@
 function BankAccount(accountName, initialAmount) {
   this.accountName = accountName;
   this.initialAmount = initialAmount;
+  this.currentId = 0;
+  this.accounts = [];
 }
+
+// create another prototype to find and check for ids
 
 BankAccount.prototype.addDeposit = function(depositAmount) {
   this.initialAmount += depositAmount
@@ -20,6 +24,8 @@ $(document).ready(function() {
     var userInputName = $("input#name").val();
     var firstDeposit = $("input#first-deposit").val();
 
+    // have it create an id
+
     $("input#name").val("");
     $("input#first-deposit").val("");
 
@@ -33,6 +39,9 @@ $(document).ready(function() {
     e.preventDefault();
     var deposit = $("input#deposit").val();
     var withdraw = $("input#withdraw").val();
+
+    var personalAccount = new BankAccount(userInputName, firstDeposit);
+    $("#amount").empty().append(personalAccount.initialAmount.addDeposit(deposit));
 
   })
 })

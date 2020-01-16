@@ -16,23 +16,23 @@
       <div class="row">
         <div class="col-md-6">
           <div id="new-account">
-            <h2>Register a new account:</h2>
             <form id="account-setup">
+              <h2>Register a new account:</h2>
               <label for="name">Name:</label>
               <input type="text" id="name"> <br>
               <label for="first-deposit">Initial Deposit:</label>
-              <input type="number" id="first-deposit"> <br>
+              <input type="number" id="first-deposit" step="0.01"> <br>
               <button type="submit" class="btn btn-primary">Create account</button>
             </form>
           </div>
         </div>
         <div class="col-md-6">
-          <h2>Deposit or Withdraw funds</h2>
           <form id="account-management">
+            <h2>Deposit or Withdraw funds</h2>
             <label for="deposit">Deposit Amount:</label>
-            <input type="number" id="deposit"> <br>
+            <input type="number" id="deposit" step="0.01"> <br>
             <label for="withdraw">Withdraw Amount:</label>
-            <input type="number" id="withdraw"> <br>
+            <input type="number" id="withdraw" step="0.01"> <br>
             <button type="submit" class="btn btn-primary">Add/Subtract</button>
           </form>
         </div>

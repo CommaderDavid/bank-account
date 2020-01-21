@@ -1,6 +1,4 @@
-function BankAccount(accountName, initialAmount) {
-  this.accountName = accountName;
-  this.initialAmount = initialAmount;
+function BankAccount() {
   this.currentId = 0;
   this.accounts = [];
 }
@@ -15,12 +13,26 @@ BankAccount.prototype.addAccount = function(account) {
   this.accounts.push(account);
 }
 
-BankAccount.prototype.addDeposit = function(depositAmount) {
+BankAccount.prototype.findAccount = function(id) {
+  for (var i = 0; i < this.accounts.length; i++) {
+    if (this.accounts[i]) {
+      return this.accounts[i];
+    }
+  }
+  return false;
+}
+
+function Account(accountName, initialAmount) {
+  this.accountName = accountName;
+  this.initialAmount = initialAmount;
+}
+
+Account.prototype.addDeposit = function(depositAmount) {
   this.initialAmount += depositAmount
   return this.initialAmount;
 }
 
-BankAccount.prototype.subWithdraw = function(withdrawAmount) {
+Account.prototype.subWithdraw = function(withdrawAmount) {
   this.initialAmount -= withdrawAmount
   return this.initialAmount;
 }

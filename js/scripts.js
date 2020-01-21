@@ -5,7 +5,10 @@ function BankAccount(accountName, initialAmount) {
   this.accounts = [];
 }
 
-// create another prototype to find and check for ids
+BankAccount.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
+}
 
 BankAccount.prototype.addDeposit = function(depositAmount) {
   this.initialAmount += depositAmount

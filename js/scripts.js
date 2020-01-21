@@ -10,6 +10,11 @@ BankAccount.prototype.assignId = function() {
   return this.currentId;
 }
 
+BankAccount.prototype.addAccount = function(account) {
+  account.id = this.assignId();
+  this.accounts.push(account);
+}
+
 BankAccount.prototype.addDeposit = function(depositAmount) {
   this.initialAmount += depositAmount
   return this.initialAmount;

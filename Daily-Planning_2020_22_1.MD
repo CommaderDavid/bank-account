@@ -25,13 +25,13 @@
 
 #### Please list the names of the lessons you completed today:
 
-*
+* Bank Account
 
 
 #### Please list the names of the projects you worked on today:
 
-*
+* Bank Account
 
 #### Please add a link to GitHub repository to all projects you worked on today:
 
-*
+* https://github.com/CommaderDavid/bank-account

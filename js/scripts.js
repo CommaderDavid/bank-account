@@ -22,9 +22,8 @@ BankAccount.prototype.findAccount = function(id) {
   return false;
 }
 
-function Account(accountName, initialAmount) {
-  this.accountName = accountName;
-  this.initialAmount = initialAmount;
+function Account() {
+  this.initialAmount;
 }
 
 Account.prototype.addDeposit = function(depositAmount) {
@@ -39,21 +38,20 @@ Account.prototype.subWithdraw = function(withdrawAmount) {
 
 // user logic
 var bankAccount = new BankAccount();
+var personalAccount = new Account();
 
 $(document).ready(function() {
   $("form#account-setup").submit(function(e) {
     e.preventDefault();
     var userInputName = $("input#name").val();
-    var firstDeposit = $("input#first-deposit").val();
+    var firstDeposit = parseInt($("input#first-deposit").val());
 
-    // have it create an id
 
     $("input#name").val("");
     $("input#first-deposit").val("");
 
-    var personalAccount = new Account(userInputName, firstDeposit);
+    personalAccount.initialAmount = firstDeposit;
     bankAccount.addAccount(personalAccount);
-    console.log(firstDeposit);
 
     $("#amount").empty().append(personalAccount.initialAmount);
     $("#user-account").show();
@@ -61,11 +59,18 @@ $(document).ready(function() {
 
   $("form#account-management").submit(function(e) {
     e.preventDefault();
-    var deposit = $("input#deposit").val();
-    var withdraw = $("input#withdraw").val();
+    var deposit = parseInt($("input#deposit").val());
+    var withdraw = parseInt($("input#withdraw").val());
+    console.log(typeof(personalAccount.initialAmount));
 
-    var personalAccount = new Account(userInputName, firstDeposit);
-    $("#amount").empty().append(personalAccount.initialAmount.addDeposit(deposit));
+    $("input#deposit").val("");
+    $("input#withdraw").val("");
+
+    personalAccount.addDeposit(deposit);
+    console.log(personalAccount.initialAmount);
+    personalAccount.subWithdraw(withdraw);
+    console.log(personalAccount.initialAmount);
+    $("#amount").empty().append(personalAccount.initialAmount);
 
   })
 })

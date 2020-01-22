@@ -38,6 +38,8 @@ Account.prototype.subWithdraw = function(withdrawAmount) {
 }
 
 // user logic
+var bankAccount = new BankAccount();
+
 $(document).ready(function() {
   $("form#account-setup").submit(function(e) {
     e.preventDefault();
@@ -49,9 +51,11 @@ $(document).ready(function() {
     $("input#name").val("");
     $("input#first-deposit").val("");
 
-    var personalAccount = new BankAccount(userInputName, firstDeposit);
+    var personalAccount = new Account(userInputName, firstDeposit);
+    bankAccount.addAccount(personalAccount);
     console.log(firstDeposit);
-    $("#amount").append(personalAccount.initialAmount);
+
+    $("#amount").empty().append(personalAccount.initialAmount);
     $("#user-account").show();
   })
 
@@ -60,7 +64,7 @@ $(document).ready(function() {
     var deposit = $("input#deposit").val();
     var withdraw = $("input#withdraw").val();
 
-    var personalAccount = new BankAccount(userInputName, firstDeposit);
+    var personalAccount = new Account(userInputName, firstDeposit);
     $("#amount").empty().append(personalAccount.initialAmount.addDeposit(deposit));
 
   })

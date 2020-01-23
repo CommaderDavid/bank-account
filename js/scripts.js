@@ -13,15 +13,6 @@ BankAccount.prototype.addAccount = function(account) {
   this.accounts.push(account);
 }
 
-BankAccount.prototype.findAccount = function(id) {
-  for (var i = 0; i < this.accounts.length; i++) {
-    if (this.accounts[i]) {
-      return this.accounts[i];
-    }
-  }
-  return false;
-}
-
 function Account() {
   this.initialAmount;
 }
@@ -61,16 +52,13 @@ $(document).ready(function() {
     e.preventDefault();
     var deposit = parseInt($("input#deposit").val());
     var withdraw = parseInt($("input#withdraw").val());
-    console.log(typeof(personalAccount.initialAmount));
 
     $("input#deposit").val("");
     $("input#withdraw").val("");
 
     personalAccount.addDeposit(deposit);
-    console.log(personalAccount.initialAmount);
     personalAccount.subWithdraw(withdraw);
-    console.log(personalAccount.initialAmount);
-    $("#amount").empty().append(personalAccount.initialAmount);
 
+    $("#amount").empty().append(personalAccount.initialAmount);
   })
 })

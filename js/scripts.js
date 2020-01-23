@@ -1,18 +1,4 @@
-function BankAccount() {
-  this.currentId = 0;
-  this.accounts = [];
-}
-
-BankAccount.prototype.assignId = function() {
-  this.currentId += 1;
-  return this.currentId;
-}
-
-BankAccount.prototype.addAccount = function(account) {
-  account.id = this.assignId();
-  this.accounts.push(account);
-}
-
+// Back end
 function Account() {
   this.initialAmount;
 }
@@ -28,7 +14,6 @@ Account.prototype.subWithdraw = function(withdrawAmount) {
 }
 
 // user logic
-var bankAccount = new BankAccount();
 var personalAccount = new Account();
 
 $(document).ready(function() {
@@ -42,7 +27,7 @@ $(document).ready(function() {
     $("input#first-deposit").val("");
 
     personalAccount.initialAmount = firstDeposit;
-    bankAccount.addAccount(personalAccount);
+    // bankAccount.addAccount(personalAccount);
 
     $("#amount").empty().append(personalAccount.initialAmount);
     $("#user-account").show();
